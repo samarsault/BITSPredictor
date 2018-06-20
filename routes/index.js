@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
     pilani = rows;
     db.get('goa', function (gRows) {
       goa = gRows;
-      console.log(goa);
       db.get('hyderabad', function(hRows) {
         hyd = hRows;
         res.render('index', {

@@ -31,7 +31,7 @@ app.use('/', indexRouter);
 app.use('/submit', submitRouter);
 app.post('/complete', (req, res) => {
   var response = { "success": false };
-  console.log(req.body);
+  // console.log(req.body);
   db.insert(req.body.campus, req.body.branch, req.body.mark, req.body.fbID, (err, resp) => {
     if (!err)
       response.success = true;
