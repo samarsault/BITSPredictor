@@ -1,12 +1,11 @@
 const { Client } = require('pg');
 const ref = require('./branch_ref');
 const client = new Client({
-  connectionString: 'postgresql://samarjeet:borm@localhost:5432/testdb', // process.env.DATABASE_URL,
-  // ssl: true,
+  connectionString:process.env.DATABASE_URL,
+  ssl: true
 });
 
 client.connect();
-
 
 module.exports = {
   get: function (campus, callBack) {
