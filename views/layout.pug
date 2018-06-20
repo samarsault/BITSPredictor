@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title BITS Cut-off Predictor
+    meta(content='width=device-width,initial-scale=1,minimal-ui', name='viewport')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons')
+    link(rel='stylesheet', href='https://unpkg.com/vue-material@beta/dist/vue-material.min.css')
+    link(rel='stylesheet', href='https://unpkg.com/vue-material@beta/dist/theme/default.css')
+
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script.
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=457501208045253&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+  body
+
+    header.md-title
+      h2 BITS Cut-off Predictor
+
+    div#app
+      block content
+
+    footer
+      p
+        | By 
+        a(href='https://github.com/thelehhman') Samarjeet Singh
+
+
+  script(src='https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js')
+  script(src='https://unpkg.com/vue-material@beta')
+  script(src='/javascripts/script.js')

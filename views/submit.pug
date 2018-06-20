@@ -1,0 +1,36 @@
+extends layout
+
+block content
+
+  div(align="center", v-if="!loggedIn")
+    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+  
+  md-card(v-if="loggedIn")
+    md-card-content
+      md-field
+        md-select#campus(v-model='campus', name='campus', placeholder='Campus')
+          md-option(value='goa') Goa
+          md-option(value='pilani') Pilani
+          md-option(value='hyderabad') Hyderabad
+      md-field
+        md-select#branch(v-model='branch', name='branch', placeholder='Branch')
+          md-option(value='csc') BE Computer Science
+          md-option(value='ece') BE Electronics & Communication
+          md-option(value='eni') BE Electronics & Instrumentation
+          md-option(value='eee') BE Electronics & Electrical
+          md-option(value='mech') BE Mechanical
+          md-option(value='chem') BE Chemical
+          md-option(value='civil') BE Civil
+          md-option(value='pharm') B Pharm
+          md-option(value='manu') BE Manufacturing
+          md-option(value='eco') MSc Economics
+          md-option(value='bio') MSc Biology
+          md-option(value='math') MSc Maths
+          md-option(value='phy') MSc Physics
+          md-option(value='mscchem') MSc Chemistry
+      md-field
+        label Marks
+        md-input(v-model='mark', type='number')
+    md-card-actions
+      md-button(@click="submit") OK
+      md-button Cancel

@@ -1,0 +1,16 @@
+{
+    "csc": "BE Computer Science",
+    "ece": "BE Electronics & Communication",
+    "eni": "BE Electronics & Instrumentation",
+    "eee": "BE Electronics & Electrical",
+    "mech": "BE Mechanical",
+    "chem": "BE Chemical",
+    "civil": "BE Civil",
+    "pharm": "B Pharm",
+    "manu": "BE Manufacturing",
+    "eco": "MSc Economics",
+    "bio": "MSc Biology",
+    "math": "MSc Maths",
+    "phy": "MSc Physics",
+    "mscchem": "MSc Chemistry"
+}

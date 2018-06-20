@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  div.right
+    md-button.md-primary
+        a(href="/submit") Submit Your Data
+  div.clearfix
+
+  h2.section-head Goa
+  md-table
+    md-table-row
+      md-table-head Branch
+      md-table-head Cut-off
+    each item in goa
+      md-table-row
+        md-table-cell=item.name
+        md-table-cell=item.min
+  
+  h2.section-head Pilani
+  md-table
+    md-table-row
+      md-table-head Branch
+      md-table-head Cut-off
+    each item in pilani
+      md-table-row
+        md-table-cell=item.name
+        md-table-cell=item.min
+
+  h2.section-head Hyderabad
+  md-table
+    md-table-row
+      md-table-head Branch
+      md-table-head Cut-off
+    each item in hyderabad
+      md-table-row
+        md-table-cell=item.name
+        md-table-cell=item.min
