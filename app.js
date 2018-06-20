@@ -9,7 +9,6 @@ var db = require('./data');
 
 var indexRouter = require('./routes/index');
 var submitRouter = require('./routes/submit');
-var completeRouter = require('./routes/complete');
 
 var app = express();
 
