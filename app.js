@@ -9,6 +9,7 @@ var db = require('./data');
 
 var indexRouter = require('./routes/index');
 var submitRouter = require('./routes/submit');
+var modRouter = require('./routes/mod');
 
 var app = express();
 
@@ -29,6 +30,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use('/', indexRouter);
 app.use('/submit', submitRouter);
+app.use('/moderator', modRouter);
+
 app.post('/complete', (req, res) => {
   var response = { "success": false };
   console.log(req);
@@ -44,6 +47,45 @@ app.post('/complete', (req, res) => {
   });
 });
 
+app.post('/getmod', (req, res) => {
+  var fb_id = req.body.fb_id;
+  var response = { "success": false, "data": [] };
+  db.isMod(fb_id, (yes)=> {
+    if (yes) {
+      db.all( (rows) => {
+        response.success = true;
+        response.data = rows;
+
+        res.write(JSON.stringify(response));
+        res.end();
+      });
+    } else {
+      res.write(JSON.stringify(response));
+      res.end();
+    }
+
+  });
+});
+
+app.post('/delmod', (req, res) => {
+  var fb_id = req.body.fb_id;
+  var response = { "success": false };
+
+  db.isMod(fb_id, (yes)=>{
+    if (yes) {
+      db.del(req.body.list, (err) => {
+        if (!err)
+          response.success = false;
+        res.write(JSON.stringify(response));
+        res.end();
+      });
+    } else {
+      res.write(JSON.stringify(response));
+      res.end();
+    }
+  })
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -54,7 +96,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  
   // render the error page
   res.status(err.status || 500);
   res.render('error');

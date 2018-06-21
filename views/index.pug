@@ -35,3 +35,7 @@ block content
       md-table-row
         md-table-cell=item.name
         md-table-cell=item.min
+block scripts
+  script.
+    Vue.use(VueMaterial.default)
+    new Vue({ el: '#app' });

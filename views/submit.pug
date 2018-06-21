@@ -4,7 +4,12 @@ block content
 
   div(align="center", v-if="!loggedIn")
    <fb:login-button scope="email" onlogin='window.location="/submit";'>Connect with Facebook</fb:login-button> 
-  
+
+  div.right(v-if="loggedIn")
+    md-button.md-primary
+        a(:href="mod_link") Moderate
+  div.clearfix
+
   md-card(v-if="loggedIn")
     md-card-content
       md-field
@@ -34,3 +39,6 @@ block content
     md-card-actions
       md-button(@click="submit") OK
       md-button Cancel
+
+block scripts
+   script(src='/javascripts/submit_client.js')

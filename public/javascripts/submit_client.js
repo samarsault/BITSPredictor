@@ -1,20 +1,6 @@
 //
 // Client
 //
-
-function param(object) {
-    var encodedString = '';
-    for (var prop in object) {
-        if (object.hasOwnProperty(prop)) {
-            if (encodedString.length > 0) {
-                encodedString += '&';
-            }
-            encodedString += encodeURI(prop + '=' + object[prop]);
-        }
-    }
-    return encodedString;
-}
-
 Vue.use(VueMaterial.default)
 
 var app = new Vue({
@@ -24,7 +10,8 @@ var app = new Vue({
         campus: '',
         mark: '',
         fbID: '',
-        loggedIn: false
+        loggedIn: false,
+        mod_link: '#'
     },
     created: function () {
         var me = this;
@@ -39,6 +26,7 @@ var app = new Vue({
             FB.getLoginStatus(function (resp) {
                 if (resp.status == 'connected') {
                     me.fbID = resp.authResponse.userID;
+                    me.mod_link = '/moderator/' + me.fbID;
                     me.loggedIn = true;
                 }
             });
@@ -57,7 +45,6 @@ var app = new Vue({
     },
     methods: {
         submit: function () {
-            var xhr = new XMLHttpRequest();
             var data = {
                 'branch': this.branch,
                 'mark': this.mark,
@@ -65,20 +52,14 @@ var app = new Vue({
                 'campus': this.campus
             };
 
-            xhr.open('POST', '/complete', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function (resp) {
-                if (this.readyState == 4 && this.status == 200) {
-                    var obj = JSON.parse(this.responseText);
-                    if (obj.success) {
-                        alert('Thank you for your contribution!')
-                        window.location = '/';
-                    }
-                    else
-                        alert('Some Error occured.');
+            ajax('/complete').post(data, (obj) => {
+                if (obj.success) {
+                    alert('Thank you for your contribution!')
+                    window.location = '/';
                 }
-            }
-            xhr.send(param(data));
+                else
+                    alert('Some Error occured.');
+            });
         }
     }
 });
