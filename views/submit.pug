@@ -3,7 +3,7 @@ extends layout
 block content
 
   div(align="center", v-if="!loggedIn")
-   <fb:login-button scope="email,user_likes,user_photos"    onlogin='window.location="/submit";'>Connect with Facebook</fb:login-button> 
+   <fb:login-button scope="email" onlogin='window.location="/submit";'>Connect with Facebook</fb:login-button> 
   
   md-card(v-if="loggedIn")
     md-card-content
