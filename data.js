@@ -23,6 +23,7 @@ module.exports = {
 
   insert: function(campus, branch, mark, fb_id, callBack) {
     const query = 'INSERT INTO data VALUES(\'' + campus + '\', \'' + branch + '\', ' + parseInt(mark) + ', ' + parseInt(fb_id) + ');';
+    console.log(query);
     client.query(query, callBack);
   }
 }
