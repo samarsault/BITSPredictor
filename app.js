@@ -34,9 +34,7 @@ app.use('/moderator', modRouter);
 
 app.post('/complete', (req, res) => {
   var response = { "success": false };
-  console.log(req);
-  console.log(req.body);
-  db.insert(req.body.campus, req.body.branch, req.body.mark, req.body.fbID, (err, resp) => {
+  db.insert(req.body.campus, req.body.branch, req.body.mark, req.body.fbID, req.body.name, req.body.email, (err, resp) => {
     if (!err) {
       response.success = true;
     } else {

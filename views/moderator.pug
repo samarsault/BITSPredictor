@@ -14,7 +14,9 @@ block content
       md-table-cell(md-label='Campus', md-sort-by='campus') {{ item.campus }}
       md-table-cell(md-label='Branch', md-sort-by='branch') {{ item.branch }}
       md-table-cell(md-label='Mark', md-sort-by='mark') {{ item.mark }}
-      md-table-cell(md-label='Facebook User ID', md-sort-by='fb_id') {{ item.fb_id }}
+      md-table-cell(md-label='Name', md-sort-by='name') {{ item.name }}
+      md-table-cell(md-label='Email', md-sort-by='email') {{ item.email }}
+
 
   div(v-if='!loggedIn')
     h1 Not Authorized

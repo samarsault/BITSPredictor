@@ -3,7 +3,7 @@ extends layout
 block content
 
   div(align="center", v-if="!loggedIn")
-   <fb:login-button scope="email" onlogin='window.location="/submit";'>Connect with Facebook</fb:login-button> 
+   <fb:login-button scope="public_profile,email" onlogin='window.location="/submit";'>Connect with Facebook</fb:login-button> 
 
   div.right(v-if="loggedIn")
     md-button.md-primary

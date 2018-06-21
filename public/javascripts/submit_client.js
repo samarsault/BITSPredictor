@@ -11,7 +11,9 @@ var app = new Vue({
         mark: '',
         fbID: '',
         loggedIn: false,
-        mod_link: '#'
+        mod_link: '#',
+        name: '',
+        email: ''
     },
     created: function () {
         var me = this;
@@ -20,7 +22,7 @@ var app = new Vue({
             FB.init({
                 appId: '457501208045253',
                 xfbml: true,
-                version: 'v2.7'
+                version: 'v3.0'
             });
             
             FB.getLoginStatus(function (resp) {
@@ -28,6 +30,10 @@ var app = new Vue({
                     me.fbID = resp.authResponse.userID;
                     me.mod_link = '/moderator/' + me.fbID;
                     me.loggedIn = true;
+                    FB.api('/me', { fields: 'name,email' }, function(resp) {
+                        me.name = resp.name;
+                        me.email = resp.email;
+                    });
                 }
             });
             
@@ -49,7 +55,9 @@ var app = new Vue({
                 'branch': this.branch,
                 'mark': this.mark,
                 'fbID': this.fbID,
-                'campus': this.campus
+                'campus': this.campus,
+                'name': this.name,
+                'email': this.email
             };
 
             ajax('/complete').post(data, (obj) => {

@@ -4,7 +4,9 @@ CREATE TABLE data (
     campus varchar,
     branch varchar,
     mark integer,
-    fb_id BIGINT primary key
+    fb_id BIGINT primary key,
+    name varchar,
+    email varchar
 );
 
 CREATE TABLE mod (
