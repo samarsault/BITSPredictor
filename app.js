@@ -75,7 +75,7 @@ app.post('/delmod', (req, res) => {
     if (yes) {
       db.del(req.body.list, (err) => {
         if (!err)
-          response.success = false;
+          response.success = true;
         res.write(JSON.stringify(response));
         res.end();
       });

@@ -33,3 +33,10 @@ footer {
   float: right;
 }
 .clearfix{clear: both;}
+a#clear {
+	color: #000;
+	text-decoration: none;
+}
+a#clear:hover {
+	font-weight: 400;
+}

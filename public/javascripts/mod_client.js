@@ -63,20 +63,22 @@ var app = new Vue({
             return `${count} entries${plural} selected`
         },
         delEntries: function() {
-            var lst = [], me = this;
+            var lst = [];
+            var me = this;
 
             for (var i = 0;i < this.selected.length;i++)
-                lst.push(this.selected[i]);
+                lst.push(this.selected[i].fb_id);
 
             ajax('/delmod').post({
                 fb_id: me.fbID, // authorization
                 list: lst.toString()
             }, function(resp) {
                  if (resp.success) {
-                     
                     me.rows = me.rows.filter(function (obj) {
                         return lst.indexOf(obj.fb_id) == -1;
                     });
+                    me.selected = [];
+                    alert('Success!');
 
                 } else {
                     alert('Unknown Error Occured')
