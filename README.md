@@ -1,4 +1,4 @@
-# BITS Pilani College Predictor
+# BITS Pilani Cut-Off Predictor
 
 Barebones web app to predict college admission cut off marks based on data provided.
 
